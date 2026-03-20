@@ -1,0 +1,64 @@
+import streamlit as st
+
+# Configuración de la página
+st.set_page_config(page_title="Test de Personalidad", page_icon="🧠")
+
+st.title("🧠 Test de Personalidad")
+st.write("Responde las siguientes preguntas para descubrir tu perfil dominante.")
+
+# --- PREGUNTAS DEL TEST ---
+
+# 1. Ambiente
+st.subheader("1. ¿Qué tipo de ambiente prefieres?")
+ambiente = st.radio(
+    "Selecciona una opción:",
+    ["Activo y lleno de energía", "Tranquilo y pacífico", "Creativo y diferente", "Familiar y seguro"]
+)
+
+# 2. Comunicación
+st.subheader("2. ¿Cómo te comunicas?")
+comunicacion = st.radio(
+    "Selecciona una opción:",
+    ["Callado/a y reservado/a", "Directo/a y honesto/a", "Pensativo/a y cuidadoso/a", "Amigable y expresivo/a"]
+)
+
+# 3. Fortaleza
+st.subheader("3. ¿Cuál es tu mayor fortaleza?")
+fortaleza = st.radio(
+    "Selecciona una opción:",
+    ["Confianza", "Inteligencia", "Creatividad", "Paciencia"]
+)
+
+# 4. Desafíos
+st.subheader("4. ¿Cómo enfrentas nuevos desafíos?")
+desafio = st.radio(
+    "Selecciona una opción:",
+    ["Emocionado/a y listo/a", "Cauteloso/a pero dispuesto/a", "Curioso/a e interesado/a", "Nervioso/a e inseguro/a"]
+)
+
+# --- LÓGICA DE RESULTADOS ---
+
+if st.button("Ver mi resultado"):
+    st.divider()
+    st.success("¡Test completado!")
+    
+    # Lógica simple de interpretación basada en la fortaleza elegida
+    if fortaleza == "Confianza":
+        st.write("### Tu perfil: El Líder Decidido")
+        st.write("Eres una persona segura que prefiere ambientes activos y una comunicación directa.")
+    elif fortaleza == "Inteligencia":
+        st.write("### Tu perfil: El Analista Reflexivo")
+        st.write("Prefieres la tranquilidad y piensas cuidadosamente antes de actuar o hablar.")
+    elif fortaleza == "Creatividad":
+        st.write("### Tu perfil: El Innovador Curioso")
+        st.write("Buscas lo diferente y enfrentas los retos con curiosidad y entusiasmo.")
+    else: # Paciencia
+        st.write("### Tu perfil: El Guardián Sereno")
+        st.write("Valoramos tu capacidad de mantener la calma y buscar seguridad en lo familiar.")
+
+    # Resumen de selecciones
+    with st.expander("Ver resumen de tus respuestas"):
+        st.write(f"- **Ambiente:** {ambiente}")
+        st.write(f"- **Comunicación:** {comunicacion}")
+        st.write(f"- **Fortaleza:** {fortaleza}")
+        st.write(f"- **Ante desafíos:** {desafio}")
